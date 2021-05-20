@@ -1,4 +1,4 @@
-package enums;
+package com.heitor.personapi.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
