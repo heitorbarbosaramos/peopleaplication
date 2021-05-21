@@ -8,7 +8,10 @@ import com.heitor.personapi.mapper.PersonMapper;
 import com.heitor.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,5 +47,12 @@ public class PersonService {
 
     public void delete(Long id) {
         repo.delete(personMapper.toModel(findById(id)));
+    }
+
+    public MessageResponseDTO updateById(Long id, PersonDTO personDTO) {
+        if(findById(id).equals(null)){
+            throw new PersonNotFoundException(id);
+        }
+         return save(personDTO);
     }
 }
