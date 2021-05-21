@@ -3,6 +3,7 @@ package com.heitor.personapi.service;
 import com.heitor.personapi.dto.MessageResponseDTO;
 import com.heitor.personapi.dto.request.PersonDTO;
 import com.heitor.personapi.entity.Person;
+import com.heitor.personapi.exception.PersonNotFoundException;
 import com.heitor.personapi.mapper.PersonMapper;
 import com.heitor.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +36,10 @@ public class PersonService {
     public List<PersonDTO> findAll() {
         return repo.findAll().stream().map(personMapper::toDTO).collect(Collectors.toList());
     }
+
+    public PersonDTO findById(Long id) {
+        return personMapper.toDTO(repo.findById(id).orElseThrow(() -> new PersonNotFoundException(id)));
+    }
+
+
 }

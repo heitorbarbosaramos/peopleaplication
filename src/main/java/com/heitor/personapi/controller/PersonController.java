@@ -36,5 +36,10 @@ public class PersonController {
         return  servicePerson.findAll();
     }
 
+    @GetMapping(value = "/{id}")
+    public PersonDTO findById(@PathVariable Long id){
+        return servicePerson.findById(id);
+    }
+
 
 }
