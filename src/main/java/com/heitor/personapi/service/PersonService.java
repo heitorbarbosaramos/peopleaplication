@@ -42,4 +42,7 @@ public class PersonService {
     }
 
 
+    public void delete(Long id) {
+        repo.delete(personMapper.toModel(findById(id)));
+    }
 }
