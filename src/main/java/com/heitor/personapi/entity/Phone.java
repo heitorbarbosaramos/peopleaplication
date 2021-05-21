@@ -23,7 +23,7 @@ public class Phone {
     @Column(nullable = false)
     private PhoneType type;
     @Column(nullable = false)
-    @Size(min = 13, max = 14)
+    @Size(min = 14, max = 15, message = "Campo number tem que ter de 14 a 15 caracteres")
     private String number;
 
 }

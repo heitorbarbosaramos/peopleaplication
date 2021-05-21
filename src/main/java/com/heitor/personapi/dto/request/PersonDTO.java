@@ -30,13 +30,12 @@ public class PersonDTO {
     private String lastName;
 
     @NotEmpty
-    @CPF
+    @CPF(message = "CPF invalido")
     private String cpf;
 
     private LocalDate birthDate;
 
     @Valid
     @NotEmpty
-    @Size(min = 13, max = 14)
     private List<Phone> phones;
 }
