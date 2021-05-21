@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -28,6 +29,11 @@ public class PersonController {
     public MessageResponseDTO createdPerson(@RequestBody @Valid PersonDTO personDTO){
         MessageResponseDTO message = servicePerson.save(personDTO);
         return MessageResponseDTO.builder().message(message.getMessage()).build();
+    }
+
+    @GetMapping
+    public List<PersonDTO> findAll(){
+        return  servicePerson.findAll();
     }
 
 

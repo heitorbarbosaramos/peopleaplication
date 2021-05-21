@@ -8,6 +8,9 @@ import com.heitor.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PersonService {
 
@@ -27,5 +30,9 @@ public class PersonService {
 
     public Person fromDto(PersonDTO personDTO){
         return personMapper.toModel(personDTO);
+    }
+
+    public List<PersonDTO> findAll() {
+        return repo.findAll().stream().map(personMapper::toDTO).collect(Collectors.toList());
     }
 }
