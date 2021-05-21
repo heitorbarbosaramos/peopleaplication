@@ -50,9 +50,7 @@ public class PersonService {
     }
 
     public MessageResponseDTO updateById(Long id, PersonDTO personDTO) {
-        if(findById(id).equals(null)){
-            throw new PersonNotFoundException(id);
-        }
-         return save(personDTO);
+        findById(id);
+        return save(personDTO);
     }
 }
