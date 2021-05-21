@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data                   //para gerar os getteres e seteres
@@ -22,6 +23,7 @@ public class Phone {
     @Column(nullable = false)
     private PhoneType type;
     @Column(nullable = false)
+    @Size(min = 13, max = 14)
     private String number;
 
 }
