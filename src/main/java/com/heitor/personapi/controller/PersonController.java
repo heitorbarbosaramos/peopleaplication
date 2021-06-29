@@ -26,8 +26,8 @@ public class PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createdPerson(@RequestBody @Valid PersonDTO personDTO){
-        MessageResponseDTO message = servicePerson.save(personDTO);
+    public MessageResponseDTO createdPerson(@RequestBody @Valid Person person){
+        MessageResponseDTO message = servicePerson.insert(person);
         return MessageResponseDTO.builder().message(message.getMessage()).build();
     }
 

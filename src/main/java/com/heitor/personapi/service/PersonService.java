@@ -27,9 +27,14 @@ public class PersonService {
         this.repo = personRepository;
     }
 
+    public MessageResponseDTO insert(Person Person){
+        Person object = repo.save(Person);
+        return MessageResponseDTO.builder().message("created person with ID: " + object.getId()).build();
+    }
+
     public MessageResponseDTO save(PersonDTO personDto){
         Person object = repo.save(fromDto(personDto));
-        return MessageResponseDTO.builder().message("created person with ID: " + object.getId()).build();
+        return MessageResponseDTO.builder().message("save person with ID: " + object.getId()).build();
     }
 
     public Person fromDto(PersonDTO personDTO){
